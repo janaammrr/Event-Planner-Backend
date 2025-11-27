@@ -17,7 +17,6 @@ type User struct {
 	Name         string    `gorm:"column:name;type:varchar(100);not null" json:"name"`
 	Email        string    `gorm:"column:email;type:varchar(255);not null;uniqueIndex:ux_users_email" json:"email"`
 	PasswordHash string    `gorm:"column:password_hash;type:varchar(255);not null" json:"-"`
-	Role         string    `gorm:"column:role;type:enum('organizer','attendee');not null;default:'attendee'" json:"role"`
 	CreatedAt    time.Time `gorm:"column:created_at;index:ix_users_created_at" json:"createdAt"`
 }
 

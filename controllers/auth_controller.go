@@ -50,7 +50,7 @@ func Signup(c *gin.Context) {
 		return
 	}
 
-    user := &models.User{Name: name, Email: email, PasswordHash: hash, Role: "attendee"}
+    user := &models.User{Name: name, Email: email, PasswordHash: hash}
 
 	if config.DB != nil {
 		// Persist with GORM
@@ -76,7 +76,6 @@ func Signup(c *gin.Context) {
 		"id":    user.ID,
 		"name":  user.Name,
 		"email": user.Email,
-		"role":  user.Role,
 	})
 }
 
@@ -131,7 +130,6 @@ func Login(c *gin.Context) {
 			"id":    user.ID,
 			"name":  user.Name,
 			"email": user.Email,
-			"role":  user.Role,
 		},
 	})
 }

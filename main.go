@@ -15,7 +15,12 @@ func main() {
 
 	// Auto-migrate if DB is connected; safe no-op otherwise
 	if config.DB != nil {
-		if err := config.DB.AutoMigrate(&models.User{}); err != nil {
+		if err := config.DB.AutoMigrate(
+			&models.User{},
+			&models.Event{},
+			&models.EventAttendee{},
+			&models.Task{},
+		); err != nil {
 			log.Printf("auto-migrate failed: %v", err)
 		}
 	}
